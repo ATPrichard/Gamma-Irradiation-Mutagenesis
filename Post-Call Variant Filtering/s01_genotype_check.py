@@ -3,7 +3,7 @@
 import os
 
 # CONFIG SECTION
-INPUT_VCF = "Results/snps/GB2_raw.snps.vcf"
+INPUT_VCF = "Results/snps/raw.snps.vcf"
 
 RESULTS_DIR = "Results"
 SUMMARY_DIR = "Summaries"
