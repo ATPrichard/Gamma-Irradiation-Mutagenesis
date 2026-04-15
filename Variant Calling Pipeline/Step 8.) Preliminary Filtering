@@ -1,0 +1,3 @@
+module load bcftools
+
+bcftools view -e'QUAL<20' /path-to-call-file-from-previous-step/call/insert_name.bcf -O v -o /path-to-newly-generated-VCF/call/insert_name.vcf
