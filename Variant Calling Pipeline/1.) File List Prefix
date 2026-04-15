@@ -1,0 +1,5 @@
+# finds DNA reads based off file type. Reverses the name for the file. Trims the first 8 characters. Reverses the order again so that it is in the correct order.
+# Removes unnecessary information from the read file names
+# functions by reversing the file name, trims 8 characters from the front, then reverse it again
+
+find /file_path/to_reads -type f -name \*1.fq.gz | rev | cut -c8- | rev > supporting_files/all_file_list_prefix.txt
