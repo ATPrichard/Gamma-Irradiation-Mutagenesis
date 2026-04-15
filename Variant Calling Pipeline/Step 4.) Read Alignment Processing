@@ -1,0 +1,13 @@
+module load samtools/1.20_gcc_12.3.0
+sam_dir_path="/path/to/Sam_Files_folder/from previous step"
+list_sam=$(find $sam_dir_path -type f -name \*.sam -exec basename {} \;)
+
+(
+while IFS= read -r line || [[ -n $line ]]; do
+        echo Starting on $line
+
+        samtools fixmate -u -m ${sam_dir_path}${line} - | \
+        samtools sort -u -T /path/to_temp/temp/temp_$(basename $line .sam) -@ 30 - | \
+        samtools markdup -@ 30 - /path/tomarkdup/markdup/$(basename $line .sam).bam
+        wait
+done < <(printf '%s' "$list_sam"); wait
