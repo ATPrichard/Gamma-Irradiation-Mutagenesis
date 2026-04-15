@@ -8,7 +8,7 @@ N=2
 (
 while IFS= read -r line; do
         ((i=i%N)); ((i++==0)) && wait
-        bwa-mem2 mem -t 32 /home/atpcyr/Reference_Genomes/KAP4/KAP4_genomic.fasta ${line}1.trimmed.fq.gz ${line}2.trimmed.fq.gz > /mnt/pixstor/sxwf7-lab/scratch_Andrew/Sam_Files/$(basename $(dirname ${line})).sam &
+        bwa-mem2 mem -t 32 /path/to_reference/reference.fasta ${line}1.trimmed.fq.gz ${line}2.trimmed.fq.gz > /path/for/output/Sam_Files$(basename $(dirname ${line})).sam &
 done < "$file_list_prefixes"; wait
 
 
