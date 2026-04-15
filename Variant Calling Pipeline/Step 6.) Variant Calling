@@ -1,0 +1,9 @@
+# bam_file_list.txt = list with file paths to .bam files generated in the previous step
+
+module load bcftools
+
+(
+for i in {1..12}; do
+        bcftools mpileup -Ou -f /path/to/reference.fasta -b /path_to/markdup/bam_file_list.txt -a AD,ADF,ADR -R /path_to_region_files/region/region_${i}.bed  | bcftools call -mv -Ob -o /path_to_output/call/call_${i}.bcf  &
+done; wait
+)
