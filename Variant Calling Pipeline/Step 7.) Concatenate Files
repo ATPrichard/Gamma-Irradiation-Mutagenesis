@@ -1,0 +1,5 @@
+bcf_list.txt = list of file paths to the .bcf files generated in the previous step
+
+module load bcftools
+
+bcftools concat -f /path-to-bcfs/call/bcf_list.txt -n -o /path-to-output/call/insert_name.bcf
