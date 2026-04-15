@@ -44,15 +44,11 @@ Ensures proper, high confidence genotype calls. Looks at homozygous genotype (GT
  - heterozygous_filter.py (SNP)
  - comparison_script.py (INDEL)
 ---
-### Step 4.) Merge:
-Takes the SNP file for a given sample and INDEL file for a sample and combines them together in position order.
+### Step 4.) Post-Processing:
+Takes the SNP file for a given sample and INDEL file for a sample and combines them together in position order. Then generates useful stats for each of the files (i.e. number of total variants, SNP and INDEL count, Ti/Tv, per chromosome breakdowns, plus a lot more).
 
  #### Scripts associated with this step:
  - combine.py
----
-### Step 5.) Basic Statistic Generation:
-Generates useful stats for each of the files (i.e. number of total variants, SNP and INDEL count, Ti/Tv, per chromosome breakdowns, plus a lot more).
- #### Scripts associated with this step:
  - stat_summary.py
 ---
 
