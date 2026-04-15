@@ -1,0 +1,27 @@
+# BWA Version of script
+
+module load bwa-mem2/2.2.1
+
+file_list_prefixes="/mnt/pixstor/sxwf7-lab/scratch_Andrew/Scripts/SNP_Call_Pipeline/supporting_files/all_file_list_prefix.txt"
+
+N=2
+(
+while IFS= read -r line; do
+        ((i=i%N)); ((i++==0)) && wait
+        bwa-mem2 mem -t 32 /home/atpcyr/Reference_Genomes/KAP4/KAP4_genomic.fasta ${line}1.trimmed.fq.gz ${line}2.trimmed.fq.gz > /mnt/pixstor/sxwf7-lab/scratch_Andrew/Sam_Files/$(basename $(dirname ${line})).sam &
+done < "$file_list_prefixes"; wait
+
+
+# Bowtie version of script
+file_list_prefixes="/path_to/file_list_prefix.txt"
+ref_path="/path/to/reference_genome"
+sam_output_dir="/path_where_output_goes/Sam_Files"
+
+module load bowtie2
+
+N=2
+(
+while IFS= read -r line; do
+        ((i=i%N)); ((i++==0)) && wait
+        bowtie2 -p 32 -x $ref_path -1 ${line}R1.fastq.gz -2 ${line}R2.fastq.gz -S ${sam_output_dir}/$(basename $(dirname ${line})).sam &
+done < "$file_list_prefixes"; wait
