@@ -1,0 +1,9 @@
+module load samtools/1.20_gcc_12.3.0
+bam_dir_path="/path_to/markdup_from_previous_step/markdup"
+list_bam=$(find $bam_dir_path -type f -name \*.bam)
+
+(
+while IFS= read -r line || [[ -n $line ]]; do
+        samtools index $line &
+done < <(printf '%s' "$list_bam"); wait
+)
