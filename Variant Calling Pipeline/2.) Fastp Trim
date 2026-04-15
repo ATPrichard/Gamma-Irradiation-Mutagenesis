@@ -1,0 +1,13 @@
+# Trims adapter sequences from reads
+
+module load fastp
+
+file_list_prefixes="file_path_to_file_list_prefix" 
+
+N=3
+(
+while IFS= read -r line; do
+        ((i=i%N)); ((i++==0)) && wait
+        fastp -i ${line}1.fq.gz -o ${line}1.trimmed.fq.gz -I ${line}2.fq.gz -O ${line}2.trimmed.fq.gz -j /dev/null -h /dev/null -w 8 &
+done < "$file_list_prefixes"; wait
+)
