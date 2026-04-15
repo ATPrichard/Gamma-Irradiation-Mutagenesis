@@ -42,9 +42,6 @@ def ensure_dirs(*paths):
 
 
 def count_variants(vcf_path):
-    """
-    Count non-header lines for progress tracking.
-    """
     count = 0
     with open(vcf_path, "r") as f:
         for line in f:
