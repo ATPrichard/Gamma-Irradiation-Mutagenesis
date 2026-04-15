@@ -20,7 +20,9 @@ Follows a standard genomic workflow, code is included in the "Variant Calling Pi
 ---
 
 ## Post-Call Variant Filtering:
-Custom solution for analyzing the *Daphnia* genome.
+- Custom solution for analyzing the *Daphnia* genome after mutagenesis
+- Script names are included in their relevant info section below. Scripts are named with a prefix in their folder as; s0X_ = SNP script, i0X_ = INDEL script, b0X_ = Both
+
 ### Step 1.) Pre-Processing:
 Accepts a raw VCF file containing variant data generated at the end of the "Variant Calling Pipeline". What this script does is separates the original VCF file into two separate files, one containing SNP calls and the other containing INDEL calls. 
 
